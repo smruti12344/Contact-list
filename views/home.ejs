@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>
+            <%=locals.title %>
+        </title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+        <!-- our css file -->
+        <link rel="stylesheet" href="/css/home.css">
+    </head>
+        <body>
+            <!-- <h1>Render from ejs view!</h1> -->
+            <h1 id="page-heading">
+                <i class="fa-solid fa-address-book"></i> My Contact List
+            </h1>
+            <div id="contact-list-container">
+            <ul >
+                <% for(let i of contact_list){%>
+                    <li class="contact">
+                        <div class="details">
+                        <p><%= i.name%></p>
+                        <p><%= i.phone%></p>
+                    </div>
+                    <div class="delet-btn">
+                        <a href="/delet-contact/?id=<%=i._id%>">
+                            
+                        
+                            
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+
+                    </div>
+                    </li>
+                    <%}%>
+            </ul>
+        </div>
+            <form id="new-contact-form" action="/creat-contact" method="POST">
+                <input type="text" name="Name" placeholder="Enter name" required>
+                <input type="number" name="phone" placeholder="Enter number" required>
+                <button type="submit">Add Details</button>
+            </form>
+
+            <script src="/js/home.js"></script>
+        </body>
+    
+</html>
